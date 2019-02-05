@@ -1,24 +1,32 @@
 const API_PATH = '/api';
 const films = require("../../resources/films");
-const { postFilm } = require("../../db");
+const { postFilm , getFilms , getFilterByID, DeleteByID } = require("../../db");
 
 module.exports = (app) => {
-    app.get(`${API_PATH}/films`, (req, res)=>{
-        res.json(films);
+    app.get(`${API_PATH}/films`, async (req, res)=>{
+       const data = await getFilms()
+       console.log(data)
+       return res.json(data)
     });
 
-    app.get(`${API_PATH}/films/:id`, (req, res)=>{
+    app.get(`${API_PATH}/films/:id`, async (req, res)=>{
         const id = req.params.id;
-        const film = films.filter(film=>film.id === id);
+        const film = await getFilterByID(id)
         res.json(film);    
     });
 
-    app.post(`${API_PATH}/film`, async (req, res)=>{
-        const film = JSON.parse(req.body.film);
-        if (film) { 
-            const resp = await postFilm(film);
+    app.get(`${API_PATH}/films/:id`, async (req, res)=>{
+        const id = req.params.id;
+        const film = await getFilterByID(id)
+        res.json(film);    
+    });
+
+    app.delete(`${API_PATH}/filmss/:id`, async (req, res)=>{
+        const id = req.params.id
+        if (id) { 
+            const resp = await DeleteByID(id);
             return res.json(resp);
         }
-        res.status(400).send({ reason: "No film sent." });
+        res.status(400).send({ reason: "No id send." });
     })
 }

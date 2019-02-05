@@ -1,6 +1,5 @@
 const MongoClient = require("mongodb").MongoClient;
 const config = require("./config");
-console.log(config)
 const connString = `mongodb://${config.DB_HOST}:${config.DB_PORT}`;
 
 let instance = null;

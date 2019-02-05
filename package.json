@@ -1,7 +1,7 @@
 {
   "name": "nodejsesenciales",
   "version": "1.0.0",
-  "description": "Repositorio para el curso de esenciales de Node.js de Platzi.",
+  "description": "Practica de express con mongo",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,20 +9,13 @@
     "fill-db": "node ./db/populate --fill",
     "clean-db": "node ./db/populate --clear"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/platzi/nodejsesenciales.git"
-  },
   "keywords": [
     "nodejs",
     "esenciales"
   ],
   "author": "Platzi",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/platzi/nodejsesenciales/issues"
-  },
-  "homepage": "https://github.com/platzi/nodejsesenciales#readme",
+ 
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
